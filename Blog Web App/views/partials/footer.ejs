@@ -1,0 +1,68 @@
+
+
+    <footer>
+            <div class="top">
+                <div class="left">
+                    <h1>Mercy's Diary ✍️</h1>
+                    <p>Your go-to developer hub. Dive into coding insights, tutorials, and personal stories. Join us on the journey through software development.</p>
+                </div>
+                <div class="right">
+                    <span>+91 (769) 3949108</span>
+                    <span>huntethan144@gmail.com</span>
+                    <span>Bholaram, Indore, MP, 452014</span>
+                </div>
+            </div>
+            <div class="copyright">
+                <span>© <%= new Date().getFullYear() %> Mercy's Diary. All rights reserved.</span>
+            </div>
+    </footer>
+
+</main>
+<script>
+    var menuBar = $("#menu-bar");
+    var menuItems = $(".nav-items");
+
+    menuBar.on("click", () => {
+        menuItems.toggleClass("visibilityToggle");
+    });
+
+    // Create Blog Form
+
+    $(".createBlogFormContainer").hide();
+
+    var blogCardsContainer = $(".blogCards");
+
+    var createBlogButton = $("#createBlogButton");
+    createBlogButton.on("click", () => {
+        console.log("Clicked");
+        blogCardsContainer.toggleClass("filter");
+        $(".createBlogFormContainer").show();
+    });
+
+    var createBlogSubmitButton = $("#createBlogSubmitButton");
+    createBlogSubmitButton.on("click", () =>{
+        $(".createBlogFormContainer").hide();
+        blogCardsContainer.toggleClass("filter");
+    });
+
+    var createBlogCloseButton = $(".createBlogCloseButton");
+    createBlogCloseButton.on("click", () => {
+        $(".createBlogFormContainer").hide();
+        blogCardsContainer.toggleClass("filter");
+    });
+
+    $(".readMore").each(function() {
+        $(this).on("click", function() {
+            $(".blogItem").removeClass("activeBlog");
+            const index = $(this).attr("data-index");
+            const blogItem = $(`#blogItem-${index}`);
+            blogItem.addClass("activeBlog");
+            blogItem.parent().prepend(blogItem);
+        });
+    });
+
+    
+
+</script>
+</body>
+</html>

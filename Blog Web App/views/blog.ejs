@@ -1,0 +1,37 @@
+<%- include('./partials/header.ejs') %>
+
+<div class="blog">
+    <div class="top">
+        <h1>Blog ✍️</h1>
+        <button id="createBlogButton">Create 🖊️</button>
+        <div class="createBlogFormContainer">
+            <div class="top">
+                <h1>Create Blog</h1>
+                <span class="material-symbols-outlined createBlogCloseButton">close</span>
+            </div>
+            <form id="create" action="/createBlog" method="post">
+                <input type="text" name="title" placeholder="Blog Title">
+                <input type="text" name="author" placeholder="Author Name">
+                <textarea name="blogDescription" placeholder="Blog Description"></textarea>
+                <textarea name="blogContent" placeholder="Write your blog"></textarea>
+                <input id="createBlogSubmitButton" type="submit" value="submit">
+            </form>
+        </div>
+    </div>
+    <div class="blogCards">
+        <% if (locals.blogArray && blogArray.length > 0) { %>
+            <% blogArray.forEach( (b, index) => { %>
+                <div class="blogItem" id="blogItem-<%= index %>">
+                    <h2 id="blogTitle"> <%= b.Title %> </h2>
+                    <span id="blogAuthor"><%= b.Author %></span>
+                    <p><%= b.Desc %></p>
+                    <p class="extraContent"><%= b.Blog %></p>
+                    <a href="#" class="readMore" data-index="<%= index %>">Read more.</a> 
+                </div>
+            <% }) %>
+        <% } %>
+    </div>
+</div>
+
+<%- include('./partials/footer.ejs') %>
+

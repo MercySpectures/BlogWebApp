@@ -21,7 +21,7 @@ app.get("/home", (req, res)  => {
 app.post("/subscribe", (req, res) => {
     const subscriber = req.body["email"];
     console.log(subscriber);
-    res.render("home.ejs");
+    res.render("index.ejs");
 });
 
 app.get("/blog", (req, res) => {
